@@ -1,3 +1,4 @@
+network.host: 0.0.0.0
 cluster.name: logstash
 http.cors.allow-origin: "/.*/"
 http.cors.enabled: true
