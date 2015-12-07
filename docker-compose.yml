@@ -4,9 +4,9 @@
 logstashshipper:
     image: logstash
     volumes:
-        - logstash/logs:/var/logs
-        - logstash/conf/shipper:/etc/conf  
-        - logstash/patterns:/etc/patterns  
+        - ./logstash/logs:/var/logs
+        - ./logstash/conf/shipper:/etc/conf  
+        - ./logstash/patterns:/etc/patterns  
     links: 
         - redisbroker:redis
     command: logstash -f /etc/conf/logstash.conf
@@ -18,7 +18,7 @@ redisbroker:
 logstashindexer:
     image: logstash
     volumes:
-        - logstash/conf/indexer:/etc/conf
+        - ./logstash/conf/indexer:/etc/conf
     links:
         - redisbroker:redis
         - elasticsearch
@@ -27,7 +27,7 @@ logstashindexer:
 elasticsearch:
     image: elasticsearch
     volumes:
-        - elasticsearch/config:/usr/share/elasticsearch/config
+        - ./elasticsearch/config:/usr/share/elasticsearch/config
     ports: 
         - "9200:9200"
         - "9300:9300"
