@@ -1,6 +1,11 @@
 #
 #
 #
+redisbroker:
+    image: redis
+    ports:
+        - "6379:6379"
+
 logstashshipper:
     image: logstash
     volumes:
@@ -11,10 +16,6 @@ logstashshipper:
         - redisbroker:redis
     command: logstash -f /etc/conf/logstash.conf
 
-redisbroker:
-    image: redis
-    ports:
-        - "6379:6379"
 logstashindexer:
     image: logstash
     volumes:
@@ -31,6 +32,7 @@ elasticsearch:
     ports: 
         - "9200:9200"
         - "9300:9300"
+
 kibana:
     image: kibana
     links:
