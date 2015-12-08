@@ -23,6 +23,8 @@ logstashindexer:
     links:
         - redisbroker:redis
         - elasticsearch
+    ports:
+        - "5514:5514"
     command: logstash -f /etc/conf/logstash.conf
 
 elasticsearch:
