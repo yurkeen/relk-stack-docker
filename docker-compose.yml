@@ -25,6 +25,7 @@ logstashindexer:
         - elasticsearch
     ports:
         - "5514:5514"
+        - "5514:5514/udp"
     command: logstash -f /etc/conf/logstash.conf
 
 elasticsearch:
